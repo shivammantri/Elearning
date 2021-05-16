@@ -1,0 +1,8 @@
+com/elearning/platform/bootstrap/ElearningApplication.class
+com/elearning/platform/filter/ResponseFilter.class
+com/elearning/platform/filter/Machine.class
+com/elearning/platform/bootstrap/ElearningConfiguration.class
+com/elearning/platform/resource/SampleResource.class
+com/elearning/platform/bootstrap/ElearningApplication$1.class
+com/elearning/platform/bootstrap/ElearningModule.class
+com/elearning/platform/filter/RequestFilter.class

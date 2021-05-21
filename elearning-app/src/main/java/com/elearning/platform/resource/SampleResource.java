@@ -32,7 +32,7 @@ public class SampleResource {
     @UnitOfWork
     public Response sampleBatch() {
         Batch batch=new Batch();
-        batch.setExternalId(IdGenerator.generateStepId());
+        batch.setExternalId(IdGenerator.generateBatchId());
         batchDao.create(batch);
         return Response.ok("this is test").build();
     }

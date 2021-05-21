@@ -16,7 +16,21 @@ public class IdGenerator {
         return idDateFormat.format(currentTime) + String.format("%05d", randomNumber);
     }
 
-    public static String generateStepId(){
+    public static String generateBatchId(){
         return "BA"+getUUIDGeneratedValue();
     }
+
+    public static String generateStudentId(){
+        return "ST"+getUUIDGeneratedValue();
+    }
+
+    public static String generateInstructorId(){
+        return "IN"+getUUIDGeneratedValue();
+    }
+
+    public static String generateAssignmentId(){
+        return "AS"+getUUIDGeneratedValue();
+    }
+
+
 }

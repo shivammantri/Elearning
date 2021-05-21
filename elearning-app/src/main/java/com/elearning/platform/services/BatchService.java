@@ -1,7 +1,8 @@
 package com.elearning.platform.services;
 
 import com.elearning.entities.Batch;
+import com.elearning.model.responses.BatchResponse;
 
 public interface BatchService {
-    public Batch getBatch(String externalId);
+    public BatchResponse getBatch(String externalId);
 }

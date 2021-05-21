@@ -1,6 +1,7 @@
 package com.elearning.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,6 +13,10 @@ public class Assignment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String createdBy;
+
+    @JsonProperty
+    @Column(unique = true)
+    private String externalId;
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "batch_id")

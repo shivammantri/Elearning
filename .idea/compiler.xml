@@ -7,7 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="elearning-entities" />
+        <module name="elearning-model" />
         <module name="elearning-app" />
+        <module name="elearning-core" />
       </profile>
     </annotationProcessing>
   </component>

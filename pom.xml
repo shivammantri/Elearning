@@ -11,6 +11,8 @@
     <modules>
         <module>elearning-app</module>
         <module>elearning-entities</module>
+        <module>elearning-core</module>
+        <module>elearning-model</module>
     </modules>
 
     <properties>

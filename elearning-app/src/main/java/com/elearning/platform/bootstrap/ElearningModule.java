@@ -1,6 +1,7 @@
 package com.elearning.platform.bootstrap;
 
 import com.codahale.metrics.MetricRegistry;
+import com.elearning.module.EntityModule;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.inject.AbstractModule;
 
@@ -22,5 +23,6 @@ public class ElearningModule extends AbstractModule{
         bind(ObjectMapper.class).toInstance(objectMapper);
         bind(SessionFactory.class).toInstance(hibernateBundle.getSessionFactory());
         bind(MetricRegistry.class).toInstance(metricRegistry);
+        install(new EntityModule());
     }
 }

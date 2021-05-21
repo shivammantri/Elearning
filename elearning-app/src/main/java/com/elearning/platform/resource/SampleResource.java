@@ -1,6 +1,10 @@
 package com.elearning.platform.resource;
 
 import com.codahale.metrics.annotation.Timed;
+import com.elearning.dao.BatchDao;
+import com.elearning.entities.Batch;
+import com.elearning.utility.IdGenerator;
+import com.google.inject.Inject;
 import io.dropwizard.hibernate.UnitOfWork;
 
 import javax.ws.rs.GET;
@@ -9,14 +13,27 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/elearning")
+@Path("/elearning/sample")
 @Produces(MediaType.APPLICATION_JSON)
 public class SampleResource {
-    @Path("/sample")
+    @Path("/test")
     @GET
-    @Timed(absolute = true,name="com.tracker.com.platform.bootstrap.resource.SampleResource.sample")
     @UnitOfWork
     public Response sample() {
+        return Response.ok("this is test").build();
+    }
+
+
+    @Inject
+    private BatchDao batchDao;
+
+    @Path("/batch")
+    @GET
+    @UnitOfWork
+    public Response sampleBatch() {
+        Batch batch=new Batch();
+        batch.setExternalId(IdGenerator.generateStepId());
+        batchDao.create(batch);
         return Response.ok("this is test").build();
     }
 }

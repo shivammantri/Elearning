@@ -62,7 +62,7 @@ public class InstructorServiceImpl implements InstructorService {
     }
 
     @Override
-    public List<BatchResponse> getAllocatedBatch(String instructorId) {
+    public List<BatchResponse> getAllocatedBatches(String instructorId) {
         Optional<Instructor> instructor = instructorDao.findByExternalId(instructorId);
         if(!instructor.isPresent()) {
             throw new ElearningException("Unable to find instructor with id :: " + instructorId, Response.Status.NOT_FOUND);

@@ -4,7 +4,7 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.jmx.JmxReporter;
 import com.elearning.platform.filter.RequestFilter;
 import com.elearning.platform.filter.ResponseFilter;
-import com.elearning.platform.resource.SampleResource;
+import com.elearning.platform.resource.*;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -39,6 +39,11 @@ public class ElearningApplication extends Application<ElearningConfiguration>{
         environment.jersey().register(injector.getInstance(SampleResource.class));
         environment.jersey().register(injector.getInstance(RequestFilter.class));
         environment.jersey().register(injector.getInstance(ResponseFilter.class));
+        environment.jersey().register(injector.getInstance(AssignmentResource.class));
+        environment.jersey().register(injector.getInstance(BatchResource.class));
+        environment.jersey().register(injector.getInstance(InstructorResource.class));
+        environment.jersey().register(injector.getInstance(StudentResource.class));
+
         log.info("Elearning Application is up!!");
     }
 

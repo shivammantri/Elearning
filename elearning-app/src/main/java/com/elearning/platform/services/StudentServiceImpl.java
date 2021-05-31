@@ -1,5 +1,6 @@
 package com.elearning.platform.services;
 
+import com.elearning.core.mappers.BatchMapper;
 import com.elearning.core.mappers.StudentMapper;
 import com.elearning.dao.BatchDao;
 import com.elearning.dao.StudentDao;
@@ -15,18 +16,23 @@ import com.google.inject.persist.Transactional;
 
 
 import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class StudentServiceImpl implements StudentService {
     private final StudentDao studentDao;
     private final StudentMapper studentMapper;
+    private final BatchMapper batchMapper;
     private final BatchService batchService;
     private final BatchDao batchDao;
 
     @Inject
-    public StudentServiceImpl(StudentDao studentDao, StudentMapper studentMapper, BatchService batchService, BatchDao batchDao) {
+    public StudentServiceImpl(StudentDao studentDao, StudentMapper studentMapper,
+                              BatchMapper batchMapper, BatchService batchService, BatchDao batchDao) {
         this.studentDao = studentDao;
         this.studentMapper = studentMapper;
+        this.batchMapper = batchMapper;
         this.batchService = batchService;
         this.batchDao = batchDao;
     }
@@ -92,5 +98,17 @@ public class StudentServiceImpl implements StudentService {
         studentDao.update(student.get());
         batchDao.update(enrolledBatch.get());
         return studentMapper.mapEntityToResponse(student.get());
+    }
+
+    @Override
+    @Transactional
+    public List<BatchResponse> getEnrolledBatches(String studentId) {
+        Optional<Student> student = studentDao.findByExternalId(studentId);
+        if(!student.isPresent()) {
+            throw new ElearningException("Unable to find student with id :: " + studentId, Response.Status.NOT_FOUND);
+        }
+        return student.get().getEnrolledBatches().stream()
+                .map(batchMapper::mapEntityToResponse)
+                .collect(Collectors.toList());
     }
 }

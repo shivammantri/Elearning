@@ -11,5 +11,5 @@ public interface InstructorService {
     public InstructorResponse getInstructor(String externalId);
     public InstructorResponse updateInstructorDetails(InstructorRequest instructorRequest);
     public InstructorResponse addInstructor(InstructorRequest instructorRequest);
-    public List<BatchResponse> getAllocatedBatch(String instructorId);
+    public List<BatchResponse> getAllocatedBatches(String instructorId);
 }

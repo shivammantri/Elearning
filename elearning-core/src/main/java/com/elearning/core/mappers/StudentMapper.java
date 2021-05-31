@@ -5,8 +5,7 @@ import com.elearning.model.requests.StudentRequest;
 import com.elearning.model.responses.StudentResponse;
 
 public class StudentMapper {
-    public Student mapRequestToEntity(StudentRequest studentRequest) {
-        Student student = new Student();
+    public void mapRequestToEntity(Student student, StudentRequest studentRequest) {
         if(studentRequest.getLocation() != null) {
             student.setLocation(studentRequest.getLocation());
         }
@@ -16,7 +15,6 @@ public class StudentMapper {
         if(studentRequest.getEmail() != null) {
             student.setEmail(studentRequest.getEmail());
         }
-        return student;
     }
 
     public StudentResponse mapEntityToResponse(Student student) {

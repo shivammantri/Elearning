@@ -17,15 +17,13 @@ public class BatchMapper {
         this.studentMapper = studentMapper;
     }
 
-    public Batch mapRequestToEntity(BatchRequest batchRequest) {
-        Batch batch = new Batch();
+    public void mapRequestToEntity(Batch batch, BatchRequest batchRequest) {
         if(batchRequest.getInfo() != null) {
             batch.setInfo(batchRequest.getInfo());
         }
         if(batchRequest.getTimeSlotOfDay() != null) {
             batch.setTimeSlotOfDay(batchRequest.getTimeSlotOfDay());
         }
-        return batch;
     }
 
     public BatchResponse mapEntityToResponse(Batch batch) {

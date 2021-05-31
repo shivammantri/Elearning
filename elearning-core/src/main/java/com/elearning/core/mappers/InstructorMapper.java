@@ -5,8 +5,7 @@ import com.elearning.model.requests.InstructorRequest;
 import com.elearning.model.responses.InstructorResponse;
 
 public class InstructorMapper {
-    public Instructor mapRequestToEntity(InstructorRequest instructorRequest) {
-        Instructor instructor = new Instructor();
+    public void mapRequestToEntity(Instructor instructor, InstructorRequest instructorRequest) {
         if(instructorRequest.getExperience() != null) {
             instructor.setExperience(instructorRequest.getExperience());
         }
@@ -22,7 +21,6 @@ public class InstructorMapper {
         if(instructorRequest.getQualification() != null) {
             instructor.setQualification(instructorRequest.getQualification());
         }
-        return instructor;
     }
 
     public InstructorResponse mapEntityToResponse(Instructor instructor) {

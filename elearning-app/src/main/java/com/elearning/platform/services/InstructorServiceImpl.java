@@ -30,7 +30,6 @@ public class InstructorServiceImpl implements InstructorService {
     }
 
     @Override
-    @Transactional
     public InstructorResponse getInstructor(String externalId) {
         Optional<Instructor> instructor = instructorDao.findByExternalId(externalId);
         if(!instructor.isPresent()) {
@@ -40,7 +39,6 @@ public class InstructorServiceImpl implements InstructorService {
     }
 
     @Override
-    @Transactional
     public InstructorResponse updateInstructorDetails(InstructorRequest instructorRequest) {
         Optional<Instructor> instructor = instructorDao.findByExternalId(instructorRequest.getExternalId());
         if(!instructor.isPresent()) {
@@ -52,7 +50,6 @@ public class InstructorServiceImpl implements InstructorService {
     }
 
     @Override
-    @Transactional
     public InstructorResponse addInstructor(InstructorRequest instructorRequest) {
         Instructor instructor = new Instructor();
         instructorMapper.mapRequestToEntity(instructor, instructorRequest);

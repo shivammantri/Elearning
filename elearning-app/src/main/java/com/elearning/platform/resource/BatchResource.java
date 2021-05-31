@@ -6,6 +6,7 @@ import com.elearning.model.responses.BatchResponse;
 import com.elearning.model.responses.StudentResponse;
 import com.elearning.platform.services.BatchService;
 import com.google.inject.Inject;
+import io.dropwizard.hibernate.UnitOfWork;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -23,12 +24,14 @@ public class BatchResource {
 
     @Path("/add/")
     @POST
+    @UnitOfWork
     public BatchResponse addBatch(BatchRequest batchRequest) {
         return batchService.createBatch(batchRequest);
     }
 
     @Path("/update/{batchId}")
     @POST
+    @UnitOfWork
     public BatchResponse updateBatchDetails(BatchRequest batchRequest,
                                                       @PathParam("batchId") String batchId) {
         if(batchId == null || !batchId.equalsIgnoreCase(batchRequest.getExternalId())) {
@@ -39,18 +42,21 @@ public class BatchResource {
 
     @Path("/students/{batchId}")
     @GET
+    @UnitOfWork
     public List<StudentResponse> getStudentsInBatch(@PathParam("batchId") String batchId) {
         return batchService.getStudentsInBatch(batchId);
     }
 
     @Path("/timeSlot/{batchId}")
     @GET
+    @UnitOfWork
     public Long getTimeSlotOfBatch(@PathParam("batchId") String batchId) {
         return batchService.getTimeSlotOfBatch(batchId);
     }
 
     @Path("/{batchId}")
     @GET
+    @UnitOfWork
     public BatchResponse getBatchDetails(@PathParam("batchId") String batchId) {
         return batchService.getBatch(batchId);
     }

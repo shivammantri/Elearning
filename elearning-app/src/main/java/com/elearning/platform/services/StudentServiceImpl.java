@@ -38,7 +38,6 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @Transactional
     public StudentResponse getStudent(String externalId) {
         Optional<Student> student = studentDao.findByExternalId(externalId);
         if(!student.isPresent()) {
@@ -48,7 +47,6 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @Transactional
     public StudentResponse createStudent(StudentRequest studentRequest) {
         Student student = new Student();
         studentMapper.mapRequestToEntity(student, studentRequest);
@@ -58,7 +56,6 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @Transactional
     public StudentResponse updateStudentDetails(StudentRequest studentRequest) {
         Optional<Student> student = studentDao.findByExternalId(studentRequest.getExternalId());
         if(!student.isPresent()) {
@@ -70,7 +67,6 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @Transactional
     public BatchResponse enrollToBatch(String batchId, String studentId) {
         Optional<Student> student = studentDao.findByExternalId(studentId);
         if(!student.isPresent()) {
@@ -80,7 +76,6 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @Transactional
     public StudentResponse unenrollFromBatch(String batchId, String studentId) {
         Optional<Student> student = studentDao.findByExternalId(studentId);
         if(!student.isPresent()) {
@@ -101,7 +96,6 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @Transactional
     public List<BatchResponse> getEnrolledBatches(String studentId) {
         Optional<Student> student = studentDao.findByExternalId(studentId);
         if(!student.isPresent()) {

@@ -28,7 +28,6 @@ public class BatchServiceImpl implements BatchService {
     }
 
     @Override
-    @Transactional
     public BatchResponse getBatch(String externalId) {
         Optional<Batch> batch = batchDao.findByExternalId(externalId);
         if(!batch.isPresent()) {
@@ -50,7 +49,6 @@ public class BatchServiceImpl implements BatchService {
     }
 
     @Override
-    @Transactional
     public BatchResponse createBatch(BatchRequest batchRequest) {
         Batch batch = new Batch();
         batchMapper.mapRequestToEntity(batch, batchRequest);
@@ -71,7 +69,6 @@ public class BatchServiceImpl implements BatchService {
     }
 
     @Override
-    @Transactional
     public BatchResponse addStudentToBatch(String batchId, Student student) {
         Optional<Batch> batch = batchDao.findByExternalId(batchId);
         if(!batch.isPresent()) {
@@ -83,7 +80,6 @@ public class BatchServiceImpl implements BatchService {
     }
 
     @Override
-    @Transactional
     public BatchResponse addAssignmentToBatch(String batchId, Assignment assignment) {
         Optional<Batch> batch = batchDao.findByExternalId(batchId);
         if(!batch.isPresent()) {

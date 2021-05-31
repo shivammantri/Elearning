@@ -19,6 +19,7 @@ import io.dropwizard.hibernate.ScanningHibernateBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import lombok.extern.slf4j.Slf4j;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 
 import java.util.TimeZone;
 
@@ -43,7 +44,7 @@ public class ElearningApplication extends Application<ElearningConfiguration>{
         environment.jersey().register(injector.getInstance(BatchResource.class));
         environment.jersey().register(injector.getInstance(InstructorResource.class));
         environment.jersey().register(injector.getInstance(StudentResource.class));
-
+        environment.jersey().register(injector.getInstance(MultiPartFeature.class));
         log.info("Elearning Application is up!!");
     }
 

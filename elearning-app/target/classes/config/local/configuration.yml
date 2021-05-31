@@ -25,9 +25,9 @@ logging:
     - type: console
       logFormat: "%date %highlight(%-5level) [%thread] %cyan(%logger{10}) [%X{id}] %msg%n"
     - type: file
-      currentLogFilename: /var/log/tracker/tracker.log
+      currentLogFilename: /var/log/elearning/elearning.log
       archive: true
-      archivedLogFilenamePattern: /var/log/tracker/tracker-%i.log.gz
+      archivedLogFilenamePattern: /var/log/elearning/elearning-%i.log.gz
       archivedFileCount: 10
       maxFileSize: 100MB
       timeZone: IST

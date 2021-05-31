@@ -7,6 +7,7 @@ import com.elearning.model.responses.InstructorResponse;
 import com.elearning.model.responses.StudentResponse;
 import com.elearning.platform.services.InstructorService;
 import com.google.inject.Inject;
+import io.dropwizard.hibernate.UnitOfWork;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -24,12 +25,14 @@ public class InstructorResource {
 
     @Path("/add/")
     @POST
+    @UnitOfWork
     public InstructorResponse addInstructor(InstructorRequest instructorRequest) {
         return instructorService.addInstructor(instructorRequest);
     }
 
     @Path("/update/{instructorId}")
     @POST
+    @UnitOfWork
     public InstructorResponse updateInstructorDetails(InstructorRequest instructorRequest,
                                                       @PathParam("instructorId") String instructorId) {
         if(instructorId == null || !instructorId.equalsIgnoreCase(instructorRequest.getExternalId())) {
@@ -40,12 +43,14 @@ public class InstructorResource {
 
     @Path("/{instructorId}")
     @GET
+    @UnitOfWork
     public InstructorResponse getInstructorDetails(@PathParam("instructorId") String instructorId) {
         return instructorService.getInstructor(instructorId);
     }
 
     @Path("/batches/{instructorId}")
     @GET
+    @UnitOfWork
     public List<BatchResponse> getListOfAllocatedBatches(@PathParam("instructorId") String instructorId) {
         return instructorService.getAllocatedBatches(instructorId);
     }

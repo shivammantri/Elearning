@@ -32,7 +32,7 @@ public class StudentDaoImpl extends BaseDaoImpl<Student, Long> implements Studen
             return Optional.empty();
         }
         else if(students.size() > 1) {
-            throw new ElearningException("More than one step present for external id :: " + externalId);
+            throw new ElearningException("More than one student present for external id :: " + externalId);
         }
         return Optional.ofNullable(students.get(0));
     }

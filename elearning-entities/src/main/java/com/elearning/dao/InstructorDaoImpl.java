@@ -32,7 +32,7 @@ public class InstructorDaoImpl extends BaseDaoImpl<Instructor, Long> implements 
             return Optional.empty();
         }
         else if(instructors.size() > 1) {
-            throw new ElearningException("More than one step present for external id :: " + externalId);
+            throw new ElearningException("More than one instructor present for external id :: " + externalId);
         }
         return Optional.ofNullable(instructors.get(0));
     }

@@ -11,5 +11,4 @@ public class BatchResponse {
     private String externalId;
     private List<StudentResponse> students;
     private InstructorResponse instructorResponse;
-    private List<AssignmentResponse> assignments;
 }

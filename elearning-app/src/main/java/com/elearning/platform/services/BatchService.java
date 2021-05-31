@@ -1,5 +1,6 @@
 package com.elearning.platform.services;
 
+import com.elearning.entities.Assignment;
 import com.elearning.entities.Student;
 import com.elearning.model.requests.BatchRequest;
 import com.elearning.model.responses.BatchResponse;
@@ -14,4 +15,5 @@ public interface BatchService {
     public BatchResponse createBatch(BatchRequest batchRequest);
     public BatchResponse updateBatchDetails(BatchRequest batchRequest);
     public BatchResponse addStudentToBatch(String batchId, Student student);
+    public BatchResponse addAssignmentToBatch(String batchId, Assignment assignment);
 }

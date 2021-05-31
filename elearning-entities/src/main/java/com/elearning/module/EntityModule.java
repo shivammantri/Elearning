@@ -10,5 +10,6 @@ public class EntityModule extends AbstractModule {
         bind(BatchDao.class).to(BatchDaoImpl.class).in(Singleton.class);
         bind(InstructorDao.class).to(InstructorDaoImpl.class).in(Singleton.class);
         bind(StudentDao.class).to(StudentDaoImpl.class).in(Singleton.class);
+        bind(AssignmentDao.class).to(AssignmentDaoImpl.class).in(Singleton.class);
     }
 }

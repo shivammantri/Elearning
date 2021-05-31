@@ -28,6 +28,7 @@ public class ElearningModule extends AbstractModule{
         bind(BatchService.class).to(BatchServiceImpl.class).in(Singleton.class);
         bind(InstructorService.class).to(InstructorServiceImpl.class).in(Singleton.class);
         bind(StudentService.class).to(StudentServiceImpl.class).in(Singleton.class);
+        bind(AssignmentService.class).to(AssignmentServiceImpl.class).in(Singleton.class);
         install(new EntityModule());
     }
 }

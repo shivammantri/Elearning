@@ -1,5 +1,6 @@
 package com.elearning.entities;
 
+import com.elearning.model.responses.FileStatus;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -12,7 +13,6 @@ public class Assignment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String createdBy;
 
     @JsonProperty
     @Column(unique = true)
@@ -23,5 +23,16 @@ public class Assignment {
     @JsonBackReference
     private Batch associatedBatch;
 
-    private String url;
+    @Lob
+    private byte[] fileData;
+
+    @JsonProperty
+    private String fileName;
+
+    @JsonProperty
+    private String fileType;
+
+    @Enumerated(EnumType.STRING)
+    private FileStatus fileStatus;
+
 }

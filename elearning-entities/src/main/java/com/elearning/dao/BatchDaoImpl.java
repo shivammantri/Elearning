@@ -32,7 +32,7 @@ public class BatchDaoImpl extends BaseDaoImpl<Batch, Long> implements BatchDao{
             return Optional.empty();
         }
         else if(batches.size() > 1) {
-            throw new ElearningException("More than one step present for external id :: " + externalId);
+            throw new ElearningException("More than one batch present for external id :: " + externalId);
         }
         return Optional.ofNullable(batches.get(0));
     }

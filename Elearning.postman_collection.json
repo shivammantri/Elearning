@@ -1,0 +1,476 @@
+{
+	"info": {
+		"_postman_id": "aaf58754-c724-487a-80c7-4c3386af9a5a",
+		"name": "Elearning",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UploadAssignment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/shivam.mantri/Desktop/Screenshot 2021-04-23 at 2.59.05 AM.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9000/assignment/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"assignment",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DownloadAssignment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/assignment/download/AS210601004035776153125?pathToWrite=/Users/shivam.mantri/Documents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"assignment",
+						"download",
+						"AS210601004035776153125"
+					],
+					"query": [
+						{
+							"key": "pathToWrite",
+							"value": "/Users/shivam.mantri/Documents"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddBatch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"info\" : \"English batch\",\n    \"timeSlotOfDay\" : 12\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/batch/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"batch",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateBatch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"info\" : \"English batch\",\n    \"timeSlotOfDay\" : 12,\n    \"externalId\" : \"BA210601132455295153460\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/batch/update/BA210601132455295153460",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"batch",
+						"update",
+						"BA210601132455295153460"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBatchDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/batch/BA210601132455295153460",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"batch",
+						"BA210601132455295153460"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTimeSlotOfBatch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/batch/timeSlot/BA210601132455295153460",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"batch",
+						"timeSlot",
+						"BA210601132455295153460"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStudentsInBatch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/batch/students/BA210601132455295153460",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"batch",
+						"students",
+						"BA210601132455295153460"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssignmentToBatch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/assignment/assign/AS210601004035776153125/BA210601132455295153460",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"assignment",
+						"assign",
+						"AS210601004035776153125",
+						"BA210601132455295153460"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateInstructor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"qualification\" : \"phd\",\n    \"experience\" : \"8 years\",\n    \"feesPerHour\" : 600,\n    \"email\" : \"test@gmail.com\",\n    \"name\" : \"Test 1\",\n    \"externalId\" : \"IN210601191456190125891\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/instructor/update/IN210601191456190125891",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"instructor",
+						"update",
+						"IN210601191456190125891"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddInstructor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"qualification\" : \"phd\",\n    \"experience\" : \"8 years\",\n    \"feesPerHour\" : 600,\n    \"email\" : \"xxx@gmail.com\",\n    \"name\" : \"XXX\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/instructor/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"instructor",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetInstructor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/instructor/IN210601191456190125891",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"instructor",
+						"IN210601191456190125891"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BatchesAllocatedToInstructor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/instructor/batches/IN210601191456190125891",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"instructor",
+						"batches",
+						"IN210601191456190125891"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddStudent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"teststudent@gmail.com\",\n    \"name\" : \"Test Student\",\n    \"location\" : \"Bangalore\",\n    \"standard\" : \"10th\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/student/add/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"student",
+						"add",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateStudentDetails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"teststudent@gmail.com\",\n    \"name\" : \"Test Student\",\n    \"location\" : \"Bangalore\",\n    \"standard\" : \"10th\",\n    \"externalId\" : \"ST210601192410192134197\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9000/student/update/ST210601192410192134197",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"student",
+						"update",
+						"ST210601192410192134197"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStudentDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/student/ST210601192410192134197",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"student",
+						"ST210601192410192134197"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EnrollStudentToBatch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/student/enroll/ST210601192410192134197/BA210601132455295153460",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"student",
+						"enroll",
+						"ST210601192410192134197",
+						"BA210601132455295153460"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UnenrollStudentFromBatch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/student/unenroll/ST210601192410192134197/BA210601132455295153460",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"student",
+						"unenroll",
+						"ST210601192410192134197",
+						"BA210601132455295153460"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetEnrolledBatchesForStudent",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/student/batches/ST210601192410192134197",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"student",
+						"batches",
+						"ST210601192410192134197"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddInstructorToBatch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/instructor/batch/IN210601191456190125891/BA210601132455295153460",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"instructor",
+						"batch",
+						"IN210601191456190125891",
+						"BA210601132455295153460"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

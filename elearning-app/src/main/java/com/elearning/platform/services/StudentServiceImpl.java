@@ -12,7 +12,6 @@ import com.elearning.model.responses.BatchResponse;
 import com.elearning.model.responses.StudentResponse;
 import com.elearning.utility.IdGenerator;
 import com.google.inject.Inject;
-import com.google.inject.persist.Transactional;
 
 
 import javax.ws.rs.core.Response;

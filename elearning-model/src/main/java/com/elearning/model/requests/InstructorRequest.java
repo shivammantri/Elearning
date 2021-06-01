@@ -2,7 +2,6 @@ package com.elearning.model.requests;
 
 import lombok.Data;
 
-import java.util.List;
 
 @Data
 public class InstructorRequest {

@@ -4,6 +4,7 @@ import com.elearning.core.mappers.BatchMapper;
 import com.elearning.dao.BatchDao;
 import com.elearning.entities.Assignment;
 import com.elearning.entities.Batch;
+import com.elearning.entities.Instructor;
 import com.elearning.entities.Student;
 import com.elearning.model.exceptions.ElearningException;
 import com.elearning.model.requests.BatchRequest;
@@ -11,7 +12,6 @@ import com.elearning.model.responses.BatchResponse;
 import com.elearning.model.responses.StudentResponse;
 import com.elearning.utility.IdGenerator;
 import com.google.inject.Inject;
-import com.google.inject.persist.Transactional;
 
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -87,6 +87,17 @@ public class BatchServiceImpl implements BatchService {
         }
         batch.get().getAssignments().add(assignment);
         assignment.setAssociatedBatch(batch.get());
+        return batchMapper.mapEntityToResponse(batch.get());
+    }
+
+    @Override
+    public BatchResponse addInstructorToBatch(String batchId, Instructor instructor) {
+        Optional<Batch> batch = batchDao.findByExternalId(batchId);
+        if(!batch.isPresent()) {
+            throw new ElearningException("Unable to find batch with id :: " + batchId, Response.Status.NOT_FOUND);
+        }
+        batch.get().setInstructor(instructor);
+        instructor.getAllocatedBatches().add(batch.get());
         return batchMapper.mapEntityToResponse(batch.get());
     }
 }

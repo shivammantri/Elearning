@@ -48,6 +48,14 @@ public class InstructorResource {
         return instructorService.getInstructor(instructorId);
     }
 
+    @Path("/batch/{instructorId}/{batchId}")
+    @POST
+    @UnitOfWork
+    public BatchResponse allocateBatch(@PathParam("instructorId") String instructorId,
+                                            @PathParam("batchId") String batchId) {
+        return instructorService.allocateBatch(instructorId, batchId);
+    }
+
     @Path("/batches/{instructorId}")
     @GET
     @UnitOfWork

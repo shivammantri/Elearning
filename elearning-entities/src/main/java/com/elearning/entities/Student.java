@@ -1,6 +1,7 @@
 package com.elearning.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.google.common.collect.Lists;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
@@ -18,5 +19,5 @@ public class Student extends Person{
 
     @ManyToMany(mappedBy = "enrolledStudents",cascade = CascadeType.ALL)
     @JsonBackReference
-    private List<Batch> enrolledBatches;
+    private List<Batch> enrolledBatches = Lists.newArrayList();
 }

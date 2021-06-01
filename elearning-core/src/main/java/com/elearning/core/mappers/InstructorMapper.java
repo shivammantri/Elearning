@@ -10,10 +10,10 @@ public class InstructorMapper {
             instructor.setExperience(instructorRequest.getExperience());
         }
         if(instructorRequest.getEmail() != null) {
-            instructor.setEmail(instructor.getEmail());
+            instructor.setEmail(instructorRequest.getEmail());
         }
         if(instructorRequest.getName() != null) {
-            instructor.setName(instructor.getName());
+            instructor.setName(instructorRequest.getName());
         }
         if(instructorRequest.getFeesPerHour() != null) {
             instructor.setFeesPerHour(instructorRequest.getFeesPerHour());

@@ -3,6 +3,7 @@ package com.elearning.entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.collect.Lists;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,7 +27,7 @@ public class Batch {
     @JoinTable(name = "BatchToStudent",
             joinColumns = {@JoinColumn(name = "batch_id")}, inverseJoinColumns = {@JoinColumn(name = "student_id")})
     @JsonManagedReference
-    private List<Student> enrolledStudents;
+    private List<Student> enrolledStudents = Lists.newArrayList();
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_id")
@@ -34,5 +35,5 @@ public class Batch {
     private Instructor instructor;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "associatedBatch")
-    private List<Assignment> assignments;
+    private List<Assignment> assignments = Lists.newArrayList();
 }

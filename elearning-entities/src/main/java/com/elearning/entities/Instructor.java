@@ -1,5 +1,6 @@
 package com.elearning.entities;
 
+import com.google.common.collect.Lists;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,5 +14,5 @@ public class Instructor extends Person{
     private Integer feesPerHour;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "instructor")
-    private List<Batch> allocatedBatches;
+    private List<Batch> allocatedBatches = Lists.newArrayList();
 }

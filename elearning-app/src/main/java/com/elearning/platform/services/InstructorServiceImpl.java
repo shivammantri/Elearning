@@ -10,7 +10,6 @@ import com.elearning.model.responses.BatchResponse;
 import com.elearning.model.responses.InstructorResponse;
 import com.elearning.utility.IdGenerator;
 import com.google.inject.Inject;
-import com.google.inject.persist.Transactional;
 
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -21,12 +20,14 @@ public class InstructorServiceImpl implements InstructorService {
     private final InstructorDao instructorDao;
     private final InstructorMapper instructorMapper;
     private final BatchMapper batchMapper;
+    private final BatchService batchService;
 
     @Inject
-    public InstructorServiceImpl(InstructorDao instructorDao, InstructorMapper instructorMapper, BatchMapper batchMapper) {
+    public InstructorServiceImpl(InstructorDao instructorDao, InstructorMapper instructorMapper, BatchMapper batchMapper, BatchService batchService) {
         this.instructorDao = instructorDao;
         this.instructorMapper = instructorMapper;
         this.batchMapper = batchMapper;
+        this.batchService = batchService;
     }
 
     @Override
@@ -67,5 +68,14 @@ public class InstructorServiceImpl implements InstructorService {
         return instructor.get().getAllocatedBatches().stream()
                 .map(batchMapper::mapEntityToResponse)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public BatchResponse allocateBatch(String instructorId, String batchId) {
+        Optional<Instructor> instructor = instructorDao.findByExternalId(instructorId);
+        if(!instructor.isPresent()) {
+            throw new ElearningException("Unable to find instructor with id :: " + instructorId, Response.Status.NOT_FOUND);
+        }
+        return batchService.addInstructorToBatch(batchId, instructor.get());
     }
 }

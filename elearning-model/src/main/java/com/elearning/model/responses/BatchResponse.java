@@ -10,5 +10,5 @@ public class BatchResponse {
     private Long timeSlotOfDay;
     private String externalId;
     private List<StudentResponse> students;
-    private InstructorResponse instructorResponse;
+    private InstructorResponse instructor;
 }

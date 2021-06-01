@@ -31,11 +31,15 @@ public class BatchMapper {
         batchResponse.setExternalId(batch.getExternalId());
         batchResponse.setInfo(batch.getInfo());
         batchResponse.setTimeSlotOfDay(batch.getTimeSlotOfDay());
-        batchResponse.setInstructorResponse(instructorMapper.mapEntityToResponse(batch.getInstructor()));
-        batchResponse.setStudents(batch.getEnrolledStudents()
-                .stream()
-                .map(studentMapper::mapEntityToResponse)
-                .collect(Collectors.toList()));
+        if(batch.getInstructor() != null) {
+            batchResponse.setInstructor(instructorMapper.mapEntityToResponse(batch.getInstructor()));
+        }
+        if(batch.getEnrolledStudents() != null && !batch.getEnrolledStudents().isEmpty()) {
+            batchResponse.setStudents(batch.getEnrolledStudents()
+                    .stream()
+                    .map(studentMapper::mapEntityToResponse)
+                    .collect(Collectors.toList()));
+        }
         return batchResponse;
     }
 }

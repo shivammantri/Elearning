@@ -12,4 +12,5 @@ public interface InstructorService {
     public InstructorResponse updateInstructorDetails(InstructorRequest instructorRequest);
     public InstructorResponse addInstructor(InstructorRequest instructorRequest);
     public List<BatchResponse> getAllocatedBatches(String instructorId);
+    public BatchResponse allocateBatch(String instructorId, String batchId);
 }

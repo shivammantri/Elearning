@@ -15,6 +15,9 @@ public class StudentMapper {
         if(studentRequest.getEmail() != null) {
             student.setEmail(studentRequest.getEmail());
         }
+        if(studentRequest.getName() != null) {
+            student.setName(studentRequest.getName());
+        }
     }
 
     public StudentResponse mapEntityToResponse(Student student) {

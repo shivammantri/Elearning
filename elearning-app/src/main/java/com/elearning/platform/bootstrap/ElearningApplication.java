@@ -2,6 +2,7 @@ package com.elearning.platform.bootstrap;
 
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.jmx.JmxReporter;
+import com.elearning.model.exceptions.ElearningExceptionMapper;
 import com.elearning.platform.filter.RequestFilter;
 import com.elearning.platform.filter.ResponseFilter;
 import com.elearning.platform.resource.*;
@@ -45,6 +46,7 @@ public class ElearningApplication extends Application<ElearningConfiguration>{
         environment.jersey().register(injector.getInstance(InstructorResource.class));
         environment.jersey().register(injector.getInstance(StudentResource.class));
         environment.jersey().register(injector.getInstance(MultiPartFeature.class));
+        environment.jersey().register(injector.getInstance(ElearningExceptionMapper.class));
         log.info("Elearning Application is up!!");
     }
 
